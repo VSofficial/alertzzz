@@ -16,10 +16,13 @@ class FriendsDashboardViewModel {
         .init(name: "Liam", status: .free),
         .init(name: "Noah", status: .working),
         .init(name: "James", status: .sleeping),
-        .init(name: "William", status: .sleeping)
+        .init(name: "William", status: .sleeping),
+        .init(name: "Varun", status: .sleeping)
     ]
 
     func friends(for status: FriendStatus) -> [Friend] {
         friends.filter { $0.status == status }
     }
+    
+    
 }

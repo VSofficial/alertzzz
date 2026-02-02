@@ -42,7 +42,12 @@ struct FriendsDashboardView: View {
 
                     case .status:
                         ScrollView {
+                            
+                    
+                            
                             VStack(alignment: .leading, spacing: 24) {
+                             
+                                
                                 ForEach(FriendStatus.allCases) { status in
                                     if !vm.friends(for: status).isEmpty {
                                         StatusSection(
@@ -50,6 +55,10 @@ struct FriendsDashboardView: View {
                                             friends: vm.friends(for: status),
                                             status: status
                                         )
+                                        
+                                        
+                                        
+                                        
                                     }
                                 }
                             }

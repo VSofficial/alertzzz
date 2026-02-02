@@ -40,6 +40,23 @@ struct StatusOptionCard: View {
     }
 }
 
+struct StatusSelfSection: View {
+    let title: String
+    let friends: [Friend]
+    let status: FriendStatus
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(title)
+                .font(.headline)
+                .foregroundStyle(.primary)
+
+            ForEach(friends) { friend in
+                SelfRow(friend: friend)
+            }
+        }
+    }
+}
 
 struct StatusSection: View {
     let title: String
@@ -170,6 +187,56 @@ struct FriendRow: View {
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
+
+struct SelfRow: View {
+
+    let friend: Friend
+
+    
+    var body: some View {
+        if friend.name == "Varun" {
+            HStack(spacing: 14) {
+
+                // Avatar
+                ZStack(alignment: .bottomTrailing) {
+                    Text(friend.status.emoji)
+                        .font(.system(size: 26))
+                        .frame(width: 48, height: 48)
+                        .background(Color(.secondarySystemBackground))
+                        .clipShape(Circle())
+
+                    Circle()
+                        .fill(friend.status.color)
+                        .frame(width: 10, height: 10)
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(friend.name)
+                        .font(.headline)
+
+                    Text(friend.status.rawValue)
+                        .font(.subheadline)
+                        .foregroundStyle(friend.status.color)
+                }
+
+                Spacer()
+
+                if friend.isFavorite {
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(.yellow)
+                }
+
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(.secondary)
+            }
+            .padding()
+            .background(Color(.secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+      
+    }
+}
+
 struct SearchBar: View {
     @Binding var text: String
 
@@ -374,3 +441,6 @@ struct NavigationRow: View {
         .padding()
     }
 }
+
+
+

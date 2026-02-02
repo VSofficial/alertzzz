@@ -45,4 +45,8 @@ extension Friend {
     var isCloseFriend: Bool {
         ["James"].contains(name)
     }
+    
+    var isSelf: Bool {
+        ["Varun"].contains(name)
+    }
 }
