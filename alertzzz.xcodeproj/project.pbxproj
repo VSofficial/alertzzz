@@ -6,14 +6,65 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FE9C08222F430CFE00B089AA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE9C08072F430BE700B089AA /* WidgetKit.framework */; };
+		FE9C08232F430CFE00B089AA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE9C08092F430BE700B089AA /* SwiftUI.framework */; };
+		FE9C08302F430CFF00B089AA /* alertzzzWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FE9C08212F430CFE00B089AA /* alertzzzWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE9C082E2F430CFF00B089AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE12EFF32ECFD8FC00BDA4D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE9C08202F430CFE00B089AA;
+			remoteInfo = alertzzzWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FE9C08182F430BE900B089AA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FE9C08302F430CFF00B089AA /* alertzzzWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		FE12EFFB2ECFD8FC00BDA4D7 /* alertzzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alertzzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE9C08072F430BE700B089AA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		FE9C08092F430BE700B089AA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		FE9C08212F430CFE00B089AA /* alertzzzWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = alertzzzWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FE9C08312F430CFF00B089AA /* Exceptions for "alertzzzWidget" folder in "alertzzzWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FE9C08202F430CFE00B089AA /* alertzzzWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FE6DC0472EDD3E2B00F41C70 /* alertzzz */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = alertzzz;
+			sourceTree = "<group>";
+		};
+		FE9C08242F430CFE00B089AA /* alertzzzWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FE9C08312F430CFF00B089AA /* Exceptions for "alertzzzWidget" folder in "alertzzzWidgetExtension" target */,
+			);
+			path = alertzzzWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +77,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE9C081E2F430CFE00B089AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE9C08232F430CFE00B089AA /* SwiftUI.framework in Frameworks */,
+				FE9C08222F430CFE00B089AA /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				FE6DC0472EDD3E2B00F41C70 /* alertzzz */,
+				FE9C08242F430CFE00B089AA /* alertzzzWidget */,
+				FE9C08062F430BE700B089AA /* Frameworks */,
 				FE12EFFC2ECFD8FC00BDA4D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				FE12EFFB2ECFD8FC00BDA4D7 /* alertzzz.app */,
+				FE9C08212F430CFE00B089AA /* alertzzzWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FE9C08062F430BE700B089AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE9C08072F430BE700B089AA /* WidgetKit.framework */,
+				FE9C08092F430BE700B089AA /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +127,12 @@
 				FE12EFF72ECFD8FC00BDA4D7 /* Sources */,
 				FE12EFF82ECFD8FC00BDA4D7 /* Frameworks */,
 				FE12EFF92ECFD8FC00BDA4D7 /* Resources */,
+				FE9C08182F430BE900B089AA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FE9C082F2F430CFF00B089AA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FE6DC0472EDD3E2B00F41C70 /* alertzzz */,
@@ -69,6 +143,28 @@
 			productName = alertzzz;
 			productReference = FE12EFFB2ECFD8FC00BDA4D7 /* alertzzz.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FE9C08202F430CFE00B089AA /* alertzzzWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE9C08322F430CFF00B089AA /* Build configuration list for PBXNativeTarget "alertzzzWidgetExtension" */;
+			buildPhases = (
+				FE9C081D2F430CFE00B089AA /* Sources */,
+				FE9C081E2F430CFE00B089AA /* Frameworks */,
+				FE9C081F2F430CFE00B089AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FE9C08242F430CFE00B089AA /* alertzzzWidget */,
+			);
+			name = alertzzzWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = alertzzzWidgetExtension;
+			productReference = FE9C08212F430CFE00B089AA /* alertzzzWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +177,9 @@
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					FE12EFFA2ECFD8FC00BDA4D7 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					FE9C08202F430CFE00B089AA = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
@@ -100,12 +199,20 @@
 			projectRoot = "";
 			targets = (
 				FE12EFFA2ECFD8FC00BDA4D7 /* alertzzz */,
+				FE9C08202F430CFE00B089AA /* alertzzzWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE12EFF92ECFD8FC00BDA4D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE9C081F2F430CFE00B089AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +229,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE9C081D2F430CFE00B089AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE9C082F2F430CFF00B089AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE9C08202F430CFE00B089AA /* alertzzzWidgetExtension */;
+			targetProxy = FE9C082E2F430CFF00B089AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FE12F0042ECFD8FE00BDA4D7 /* Debug */ = {
@@ -260,7 +382,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,7 +412,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,6 +420,62 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = alertzzz.alertzzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FE9C08332F430CFF00B089AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A4M998RPR5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = alertzzzWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = alertzzzWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = alertzzz.alertzzz.alertzzzWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE9C08342F430CFF00B089AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A4M998RPR5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = alertzzzWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = alertzzzWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = alertzzz.alertzzz.alertzzzWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,6 +499,15 @@
 			buildConfigurations = (
 				FE12F0072ECFD8FE00BDA4D7 /* Debug */,
 				FE12F0082ECFD8FE00BDA4D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE9C08322F430CFF00B089AA /* Build configuration list for PBXNativeTarget "alertzzzWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE9C08332F430CFF00B089AA /* Debug */,
+				FE9C08342F430CFF00B089AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
