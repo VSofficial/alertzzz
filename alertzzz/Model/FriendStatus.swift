@@ -34,7 +34,7 @@ enum FriendStatus: String, CaseIterable, Identifiable {
 struct Friend: Identifiable {
     let id = UUID()
     let name: String
-    let status: FriendStatus
+    var status: FriendStatus
 }
 
 extension Friend {

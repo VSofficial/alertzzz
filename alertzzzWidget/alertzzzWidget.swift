@@ -8,54 +8,99 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-    }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
-}
+// MARK: - Timeline Entry
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
+    let myStatus: String
 }
 
-struct alertzzzWidgetEntryView : View {
+// MARK: - Provider
+
+struct Provider: TimelineProvider {
+    
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), myStatus: "Free")
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        completion(loadEntry())
+    }
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        let entry = loadEntry()
+        
+        // Refresh every 15 minutes
+        let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
+        let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+        
+        completion(timeline)
+    }
+    
+    private func loadEntry() -> SimpleEntry {
+        let defaults = UserDefaults(suiteName: "group.com.varun.alertzzz")
+        let status = defaults?.string(forKey: "myStatus") ?? "Free"
+        
+        return SimpleEntry(date: Date(), myStatus: status)
+    }
+}
+
+// MARK: - Widget View
+
+struct alertzzzWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
+        VStack(alignment: .leading, spacing: 10) {
+            
+            Text("You are")
+                .font(.caption)
+                .foregroundStyle(.secondary)
 
-            Text("Emoji:")
-            Text(entry.emoji)
+            Text(entry.myStatus)
+                .font(.title2)
+                .bold()
+
+            Spacer()
+
+            HStack {
+                Image(systemName: icon(for: entry.myStatus))
+                Text(statusMessage(for: entry.myStatus))
+                    .font(.caption2)
+            }
+            .foregroundStyle(.secondary)
+        }
+        .padding()
+    }
+    
+    private func icon(for status: String) -> String {
+        switch status {
+        case "Free":
+            return "checkmark.circle.fill"
+        case "Working":
+            return "briefcase.fill"
+        case "Sleeping":
+            return "moon.fill"
+        default:
+            return "person.fill"
+        }
+    }
+    
+    private func statusMessage(for status: String) -> String {
+        switch status {
+        case "Free":
+            return "Available"
+        case "Working":
+            return "Focus mode"
+        case "Sleeping":
+            return "Do not disturb"
+        default:
+            return ""
         }
     }
 }
+
+// MARK: - Widget Configuration
 
 struct alertzzzWidget: Widget {
     let kind: String = "alertzzzWidget"
@@ -71,14 +116,17 @@ struct alertzzzWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Your Status")
+        .description("See your current alertzzz status at a glance.")
+        .supportedFamilies([.systemSmall])
     }
 }
+
+// MARK: - Preview
 
 #Preview(as: .systemSmall) {
     alertzzzWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    SimpleEntry(date: .now, myStatus: "Free")
+    SimpleEntry(date: .now, myStatus: "Working")
 }
