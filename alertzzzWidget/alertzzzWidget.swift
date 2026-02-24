@@ -2,7 +2,7 @@
 //  alertzzzWidget.swift
 //  alertzzzWidget
 //
-//  Created by Varun Sharma on 16/02/26.
+//  Created by Varun Sharma on 20/02/26.
 //
 
 import WidgetKit
@@ -38,7 +38,7 @@ struct Provider: TimelineProvider {
     }
     
     private func loadEntry() -> SimpleEntry {
-        let defaults = UserDefaults(suiteName: "group.com.varun.alertzzz")
+        let defaults = UserDefaults(suiteName: "group.com.alertzzz")
         let status = defaults?.string(forKey: "myStatus") ?? "Free"
         
         return SimpleEntry(date: Date(), myStatus: status)
@@ -53,17 +53,21 @@ struct alertzzzWidgetEntryView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             
-            Text("You are")
+            Text("alertzzz")
                 .font(.caption)
+                .foregroundStyle(.secondary)
+            
+            Text("You are")
+                .font(.caption2)
                 .foregroundStyle(.secondary)
 
             Text(entry.myStatus)
                 .font(.title2)
                 .bold()
-
+            
             Spacer()
-
-            HStack {
+            
+            HStack(spacing: 6) {
                 Image(systemName: icon(for: entry.myStatus))
                 Text(statusMessage(for: entry.myStatus))
                     .font(.caption2)
@@ -89,7 +93,7 @@ struct alertzzzWidgetEntryView: View {
     private func statusMessage(for status: String) -> String {
         switch status {
         case "Free":
-            return "Available"
+            return "Available for alerts"
         case "Working":
             return "Focus mode"
         case "Sleeping":
@@ -117,7 +121,7 @@ struct alertzzzWidget: Widget {
             }
         }
         .configurationDisplayName("Your Status")
-        .description("See your current alertzzz status at a glance.")
+        .description("See your current alertzzz status instantly.")
         .supportedFamilies([.systemSmall])
     }
 }

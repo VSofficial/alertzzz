@@ -80,8 +80,8 @@ struct FriendsDashboardView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        // add friend
+                    NavigationLink {
+                        SetStatusView()
                     } label: {
                         Image(systemName: "plus")
                     }

@@ -25,7 +25,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE9C08202F430CFE00B089AA"
+               BlueprintIdentifier = "FEFB24D02F4808AC00CD66A9"
                BuildableName = "alertzzzWidgetExtension.appex"
                BlueprintName = "alertzzzWidgetExtension"
                ReferencedContainer = "container:alertzzz.xcodeproj">
