@@ -30,7 +30,7 @@ class FriendsDashboardViewModel {
             myProfile.status = newStatus
 
             // 2️⃣ Save to App Group
-            let defaults = UserDefaults(suiteName: "group.com.varun.alertzzz")
+            let defaults = UserDefaults(suiteName: "group.com.alertzzz")
             defaults?.set(newStatus.rawValue, forKey: "myStatus")
 
             // 3️⃣ Tell widget to refresh

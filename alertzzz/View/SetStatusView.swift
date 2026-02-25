@@ -85,16 +85,16 @@ struct SetStatusView: View {
             }
             .navigationTitle("Set Status")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        // dismiss action
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.primary)
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .topBarLeading) {
+//                    Button {
+//                        // dismiss action
+//                    } label: {
+//                        Image(systemName: "xmark")
+//                            .foregroundStyle(.primary)
+//                    }
+//                }
+//            }
         }
     }
 }

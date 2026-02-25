@@ -2,7 +2,7 @@
 //  alertzzzWidgetBundle.swift
 //  alertzzzWidget
 //
-//  Created by Varun Sharma on 16/02/26.
+//  Created by Varun Sharma on 20/02/26.
 //
 
 import WidgetKit
@@ -12,6 +12,5 @@ import SwiftUI
 struct alertzzzWidgetBundle: WidgetBundle {
     var body: some Widget {
         alertzzzWidget()
-        //alertzzzWidgetControl()
     }
 }
