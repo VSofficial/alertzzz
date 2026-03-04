@@ -7,12 +7,12 @@
 import SwiftUI
 
 struct StatusOptionCard: View {
-    let status: UserStatus
+    let status: FriendStatus
     let isSelected: Bool
 
     var body: some View {
         HStack(spacing: 14) {
-            Image(systemName: status.icon)
+            Image(systemName: status.emoji)
                 .font(.title3)
                 .foregroundStyle(isSelected ? .white : .primary)
 

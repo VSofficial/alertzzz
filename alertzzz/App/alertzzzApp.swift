@@ -16,7 +16,7 @@ struct alertzzzApp: App {
         WindowGroup {
 //            FriendsDashboardView()
 //                .environment(appState)
-            SetStatusView()
+            FriendsDashboardView()
                 .environment(appState)
         }
     }

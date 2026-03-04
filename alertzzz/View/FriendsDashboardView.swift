@@ -5,95 +5,48 @@
 //  Created by Varun Sharma on 13/12/25.
 //
 
+
 import SwiftUI
 
 struct FriendsDashboardView: View {
 
-    @State private var vm = FriendsDashboardViewModel()
-    @State private var selectedTab: Tab = .status
-
-    enum Tab {
-        case status, friends, settings
-    }
+    @Environment(AppState.self) private var appState
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
+            VStack(spacing: 20) {
 
-                // MARK: - Top Tabs
-                HStack {
-                    TabButton(title: "Status", isSelected: selectedTab == .status)
-                        .onTapGesture { selectedTab = .status }
+                Text("My Status")
+                    .font(.title2.bold())
 
-                    TabButton(title: "Friends", isSelected: selectedTab == .friends)
-                        .onTapGesture { selectedTab = .friends }
+                Text(appState.currentSelf.status.rawValue)
+                    .font(.headline)
 
-                    TabButton(title: "Settings", isSelected: selectedTab == .settings)
-                        .onTapGesture { selectedTab = .settings }
+                Text(appState.statusMessage)
+
+                NavigationLink("Change Status") {
+                    SetStatusView()
                 }
-                .padding(.horizontal)
-                .padding(.top, 8)
 
-                Divider().opacity(0.3)
+                Divider()
 
-                // MARK: - Content
-                Group {
-                    switch selectedTab {
-
-                    case .status:
-                        ScrollView {
-                            
-                            VStack(alignment: .leading, spacing: 24) {
-                             
-                                StatusSection(
-                                         title: "My Status",
-                                         friends: [vm.myProfile],
-                                         status: vm.myProfile.status
-                                     )
-                                
-                                ForEach(FriendStatus.allCases) { status in
-                                    if !vm.friends(for: status).isEmpty {
-                                        StatusSection(
-                                            title: status.rawValue,
-                                            friends: vm.friends(for: status),
-                                            status: status
-                                        )
-                                       
-                                    }
-                                }
-                            }
-                            .padding()
-                        }
-
-                    case .friends:
-                        FriendsTabView()
-
-                    case .settings:
-                       // SettingsView()
-                        SettingsView()
+                ForEach(appState.friends) { friend in
+                    HStack {
+                        Text(friend.name)
+                        Spacer()
+                        Text(friend.status.rawValue)
                     }
                 }
-                .animation(.easeInOut, value: selectedTab)
             }
-            .background(Color(.systemBackground))
+            .padding()
             .navigationTitle("Friends")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        SetStatusView()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
         }
-        .preferredColorScheme(.dark)
     }
 }
 
 #Preview {
     FriendsDashboardView()
+        .environment(AppState())
 }
    
 
