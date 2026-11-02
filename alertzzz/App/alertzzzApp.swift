@@ -14,10 +14,10 @@ struct alertzzzApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            FriendsDashboardView()
-//                .environment(appState)
-            SetStatusView()
+            FriendsDashboardView()
                 .environment(appState)
+//            SetStatusView()
+//                .environment(appState)
         }
     }
 }
