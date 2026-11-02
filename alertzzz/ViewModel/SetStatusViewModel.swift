@@ -10,8 +10,6 @@ import Observation
 
 @Observable
 class SetStatusViewModel {
-    var selectedStatus: FriendStatus = .free
+    var selectedStatus: UserStatus = .free
     var message: String = ""
 }
-
-
