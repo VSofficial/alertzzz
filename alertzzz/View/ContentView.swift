@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ProfileCard(name: "Varun Sharma", email: "hii@gmail.com")
 }
